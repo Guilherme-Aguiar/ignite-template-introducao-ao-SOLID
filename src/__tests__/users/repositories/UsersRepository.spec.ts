@@ -18,11 +18,11 @@ describe("UsersRepository", () => {
     expect(user).toMatchObject({
       name: "Vinicius Fraga",
       email: "vinifraga@rocketseat.com",
-      admin: false,
+      isAdmin: false,
     });
     expect(validate(user.id)).toBe(true);
-    expect(user.created_at).toBeInstanceOf(Date);
-    expect(user.updated_at).toBeInstanceOf(Date);
+    expect(user.createdAt).toBeInstanceOf(Date);
+    expect(user.updatedAt).toBeInstanceOf(Date);
   });
 
   it("should be able to list all users", () => {
@@ -47,11 +47,11 @@ describe("UsersRepository", () => {
     expect(findUser).toMatchObject({
       name: user.name,
       email: user.email,
-      admin: false,
+      isAdmin: false,
     });
     expect(validate(findUser.id)).toBe(true);
-    expect(findUser.created_at).toBeInstanceOf(Date);
-    expect(findUser.updated_at).toBeInstanceOf(Date);
+    expect(findUser.createdAt).toBeInstanceOf(Date);
+    expect(findUser.updatedAt).toBeInstanceOf(Date);
   });
 
   it("should be able to find user by e-mail address", () => {
@@ -65,28 +65,28 @@ describe("UsersRepository", () => {
     expect(findUser).toMatchObject({
       name: user.name,
       email: user.email,
-      admin: false,
+      isAdmin: false,
     });
     expect(validate(findUser.id)).toBe(true);
-    expect(findUser.created_at).toBeInstanceOf(Date);
-    expect(findUser.updated_at).toBeInstanceOf(Date);
+    expect(findUser.createdAt).toBeInstanceOf(Date);
+    expect(findUser.updatedAt).toBeInstanceOf(Date);
   });
 
-  it("should be able to turn an user as admin", () => {
+  it("should be able to turn an user as isAdmin", () => {
     const user = usersRepository.create({
       name: "Vinicius Fraga",
       email: "vinifraga@rocketseat.com",
     });
 
-    const admin = usersRepository.turnAdmin(user);
+    const isAdmin = usersRepository.turnAdmin(user);
 
-    expect(admin).toMatchObject({
+    expect(isAdmin).toMatchObject({
       name: user.name,
       email: user.email,
-      admin: true,
+      isAdmin: true,
     });
-    expect(validate(admin.id)).toBe(true);
-    expect(admin.created_at).toBeInstanceOf(Date);
-    expect(admin.updated_at).toBeInstanceOf(Date);
+    expect(validate(isAdmin.id)).toBe(true);
+    expect(isAdmin.createdAt).toBeInstanceOf(Date);
+    expect(isAdmin.updatedAt).toBeInstanceOf(Date);
   });
 });

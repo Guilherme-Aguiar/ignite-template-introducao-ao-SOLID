@@ -20,7 +20,7 @@ describe("TurnUserAdminUseCase", () => {
 
     const updatedUser = turnUserAdminUseCase.execute({ user_id: user.id });
 
-    expect(updatedUser.admin).toBe(true);
+    expect(updatedUser.isAdmin).toBe(true);
     expect(usersRepository.list()).toStrictEqual(
       expect.arrayContaining([updatedUser])
     );

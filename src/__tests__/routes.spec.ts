@@ -17,7 +17,7 @@ describe("[POST] /users", () => {
     expect(response.body).toMatchObject({
       name: "John Doe",
       email: "john.doe@example.com",
-      admin: false,
+      isAdmin: false,
     });
   });
 
@@ -49,7 +49,7 @@ describe("[PATCH] /users/:user_id/admin", () => {
       name: user.name,
       email: user.email,
     });
-    expect(response.body.admin).toBe(true);
+    expect(response.body.isAdmin).toBe(true);
   });
 
   it("should not be able to turn a non existing user as admin", async () => {
@@ -74,14 +74,14 @@ describe("[GET] /users/:user_id", () => {
 
     const parsedResponse = {
       ...response.body,
-      created_at: new Date(response.body.created_at),
-      updated_at: new Date(response.body.updated_at),
+      createdAt: new Date(response.body.createdAt),
+      updatedAt: new Date(response.body.updatedAt),
     };
 
     expect(parsedResponse).toMatchObject({
       ...user,
-      created_at: user.created_at,
-      updated_at: user.updated_at,
+      createdAt: user.createdAt,
+      updatedAt: user.updatedAt,
     });
   });
 
@@ -118,12 +118,12 @@ describe("[GET] /users", () => {
     expect(
       response.body.map((res) => ({
         ...res,
-        created_at: new Date(res.created_at),
-        updated_at: new Date(res.updated_at),
+        createdAt: new Date(res.createdAt),
+        updatedAt: new Date(res.updatedAt),
       }))
     ).toEqual(
       expect.arrayContaining([
-        expect.objectContaining({ ...user1, admin: true }),
+        expect.objectContaining({ ...user1, isAdmin: true }),
         user2,
         user3,
       ])

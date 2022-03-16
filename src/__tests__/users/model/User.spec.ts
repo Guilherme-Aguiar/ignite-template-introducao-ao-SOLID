@@ -9,17 +9,17 @@ describe("User model", () => {
     Object.assign(user, {
       name: "Atlas",
       email: "atlas@fromspace.com",
-      created_at: new Date(),
-      updated_at: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date(),
     });
 
     expect(user).toMatchObject({
       name: "Atlas",
       email: "atlas@fromspace.com",
-      admin: false,
+      isAdmin: false,
     });
     expect(validate(user.id)).toBe(true);
-    expect(user.created_at).toBeInstanceOf(Date);
-    expect(user.updated_at).toBeInstanceOf(Date);
+    expect(user.createdAt).toBeInstanceOf(Date);
+    expect(user.updatedAt).toBeInstanceOf(Date);
   });
 });

@@ -6,7 +6,7 @@ import { ListAllUsersUseCase } from "../../../modules/users/useCases/listAllUser
 describe("ListAllUsersUseCase", () => {
   let usersRepository: UsersRepository;
   let listAllUsersUseCase: ListAllUsersUseCase;
-  let userId: string;
+  let user_id: string;
 
   beforeAll(() => {
     usersRepository = UsersRepository.getInstance();
@@ -24,7 +24,7 @@ describe("ListAllUsersUseCase", () => {
       email: "vinifraga@rocketseat.com",
     });
 
-    userId = user2.id;
+    user_id = user2.id;
 
     const user3 = usersRepository.create({
       name: "Joseph Oliveira",
@@ -49,7 +49,7 @@ describe("ListAllUsersUseCase", () => {
 
   it("should not be able to a non admin user get list of all users", () => {
     expect(() => {
-      listAllUsersUseCase.execute({ user_id: userId });
+      listAllUsersUseCase.execute({ user_id: user_id });
     }).toThrow();
   });
 
